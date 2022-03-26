@@ -19,8 +19,8 @@ class BasePage:
         return True
 
     def go_to_register_page(self):
-        register_link = self.browser.find_element()
-        register_link.click(*BasePageLocators.REGISTER_LINK)
+        register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
+        register_link.click()
 
     def should_be_register_link(self):
         assert self.is_element_present(*BasePageLocators.REGISTER_LINK), "Register link is not presented"
