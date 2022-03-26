@@ -25,7 +25,7 @@ link = "http://demowebshop.tricentis.com/"
 
 # @pytest.mark.register_user
 class TestRegisterNewUser:
-    def test_register_new_user(self, browser):
+    def test_register_new_user_male(self, browser, gender='male'):
         page = RegisterPage(browser, link)
         page.open()
         page.go_to_register_page()
@@ -33,5 +33,17 @@ class TestRegisterNewUser:
         last_name = names.get_last_name()
         email = str(time.time()) + '@mail.org'
         password = '123qwe789'
-        page.register_new_user(first_name, last_name, email, password)
+        page.register_new_user(gender, first_name, last_name, email, password)
+        time.sleep(3)
+
+    def test_register_new_user_female(self, browser, gender='female'):
+        page = RegisterPage(browser, link)
+        page.open()
+        page.go_to_register_page()
+        first_name = names.get_first_name(gender='female')
+        last_name = names.get_last_name()
+        email = str(time.time()) + '@mail.org'
+        password = '123qwe789'
+        page.register_new_user(gender, first_name, last_name, email, password)
+        time.sleep(3)
 
