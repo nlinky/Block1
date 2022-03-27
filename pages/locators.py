@@ -15,3 +15,4 @@ class RegisterPageLocators:
     REGISTER_PASSWORD = (By.CSS_SELECTOR, '#Password')
     REGISTER_PASSWORD_CONFIRM = (By.CSS_SELECTOR, '#ConfirmPassword')
     REGISTER_BUTTON = (By.CSS_SELECTOR, '#register-button')
+    SUCCESS_MESSAGE_REGISTRATION = (By.CSS_SELECTOR, 'div .result')
