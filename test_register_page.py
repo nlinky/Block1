@@ -25,6 +25,7 @@ class TestRegisterFromMainPage:
 
 @pytest.mark.register_user
 class TestRegisterNewUser:
+    # регистрация без выбора пола
     def test_register_new_user(self, browser):
         page = RegisterPage(browser, link)
         page.open()
@@ -38,6 +39,7 @@ class TestRegisterNewUser:
         page.should_be_success_message_registration()
         time.sleep(3)
 
+    # регистрация с выбором мужского пола
     def test_register_new_user_male(self, browser):
         page = RegisterPage(browser, link)
         page.open()
@@ -52,6 +54,7 @@ class TestRegisterNewUser:
         page.should_be_success_message_registration()
         time.sleep(3)
 
+    # регистрация с выбором женского пола
     def test_register_new_user_female(self, browser):
         page = RegisterPage(browser, link)
         page.open()
@@ -66,4 +69,13 @@ class TestRegisterNewUser:
         page.should_be_success_message_registration()
         time.sleep(3)
 
+
+# проверка сообщений об ошибке при не заполнении обязательных полей
+def test_user_should_see_warning_if_fields_are_not_filled(self, browser):
+    page = RegisterPage(browser, link)
+    page.open()
+    page.go_to_register_page()
+    page.register_new_user()
+    page.is_all_fields_has_error_class()
+    
 # pytest -v --tb=line -m register_user .\test_register_page.py

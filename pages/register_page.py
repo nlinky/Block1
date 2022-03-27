@@ -13,6 +13,34 @@ class RegisterPage(BasePage):
     def should_be_register_form(self):
         assert self.is_element_present(*RegisterPageLocators.REGISTER_FORM), 'Register form is not presented'
 
+    def is_all_fields_has_error_class(self):
+        self.is_first_name_field_has_error_class()
+        self.is_last_name_field_has_error_class()
+        self.is_email_field_has_error_class()
+        self.is_password_field_has_error_class()
+        self.is_confirm_password_field_has_error_class()
+
+    def is_first_name_field_has_error_class(self):
+        first_name_input_field = self.browser.find_element(*RegisterPageLocators.REGISTER_FIRST_NAME)
+        assert 'error' in first_name_input_field.get_attribute("class"), "The First Name field has no Error class"
+
+    def is_last_name_field_has_error_class(self):
+        last_name_input_field = self.browser.find_element(*RegisterPageLocators.REGISTER_LAST_NAME)
+        assert 'error' in last_name_input_field.get_attribute("class"), "The Last Name field has no Error class"
+
+    def is_email_field_has_error_class(self):
+        email_input_field = self.browser.find_element(*RegisterPageLocators.REGISTER_EMAIL)
+        assert 'error' in email_input_field.get_attribute("class"), "The Email field has no Error class"
+
+    def is_password_field_has_error_class(self):
+        password_input_field = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD)
+        assert 'error' in password_input_field.get_attribute("class"), "The Password field has no Error class"
+
+    def is_confirm_password_field_has_error_class(self):
+        confirm_password_input_field = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD_CONFIRM)
+        assert 'error' in confirm_password_input_field.get_attribute("class"), "The Confirm password field has no " \
+                                                                               "Error class "
+
     def filling_registration_form(self, first_name, last_name, email, password):
         input_first_name = self.browser.find_element(*RegisterPageLocators.REGISTER_FIRST_NAME)
         input_first_name.send_keys(first_name)
@@ -42,6 +70,8 @@ class RegisterPage(BasePage):
         message_registration = self.browser.find_element(*RegisterPageLocators.SUCCESS_MESSAGE_REGISTRATION)
         assert message_registration.text == 'Your registration completed', "There is no message about registration " \
                                                                            "completion "
+
+
 
 
 
