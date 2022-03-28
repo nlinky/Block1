@@ -12,6 +12,14 @@ class RegisterPage(BasePage):
 
     def should_be_register_form(self):
         assert self.is_element_present(*RegisterPageLocators.REGISTER_FORM), 'Register form is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_GENDER_MALE_RADIO), 'Gender male radio button is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_GENDER_FEMALE_RADIO), 'Gender female radio button is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_FIRST_NAME), 'First name field is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_LAST_NAME), 'Last name field is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_EMAIL), 'Email field is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_PASSWORD), 'Password field is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_PASSWORD_CONFIRM), 'Confirm password field is not presented'
+        assert self.is_element_present(*RegisterPageLocators.REGISTER_BUTTON), 'Register button is not presented'
 
     def is_all_fields_has_error_class(self):
         self.is_first_name_field_has_error_class()
