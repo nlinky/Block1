@@ -3,8 +3,8 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     REGISTER_LINK = (By.CSS_SELECTOR, '.ico-register')
-    LOG_IN_LINK = (By.CSS_SELECTOR, '.ico-login') #text
-    LOG_OUT_LINK = (By.CSS_SELECTOR, '.ico-logout') #text
+    LOG_IN_LINK = (By.CSS_SELECTOR, '.ico-login')
+    LOG_OUT_LINK = (By.CSS_SELECTOR, '.ico-logout')
     ACCOUNT_LINK = (By.CSS_SELECTOR, 'div.header-links a.account')
 
 
@@ -22,12 +22,20 @@ class RegisterPageLocators:
 
 
 class LoginPageLocators:
-    LOGIN_FORM = (By.CSS_SELECTOR, '.returning-wrapper')
+    LOGIN_FORM = (By.CSS_SELECTOR, 'form[action="/login"]')
     LOGIN_EMAIL = (By.CSS_SELECTOR, '#Email')
     LOGIN_PASSWORD = (By.CSS_SELECTOR, '#Password')
     REMEMBER_ME_CHECKBOX = (By.CSS_SELECTOR, '#RememberMe')
     FORGET_PASSWORD_LINK = (By.CSS_SELECTOR, 'span.forgot-password a')
-    LOGIN_BUTTON = (By.CSS_SELECTOR, 'button-1 login-button')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, '.button-1.login-button')
     REGISTER_BLOCK = (By.CSS_SELECTOR, 'div.new-wrapper.register-block')
     REGISTER_BUTTON_ON_PAGE_LOGIN = (By.CSS_SELECTOR, '.button-1.register-button')
+
+
+class ChangePasswordPageLocators:
+    CHANGE_PASSWORD_FORM = (By.CSS_SELECTOR, 'form[action="/customer/changepassword"]')
+    OLD_PASSWORD = (By.CSS_SELECTOR, '#OldPassword')
+    NEW_PASSWORD = (By.CSS_SELECTOR, '#NewPassword')
+    CONFIRM_PASSWORD = (By.CSS_SELECTOR, '#ConfirmNewPassword')
+    CHANGE_PASSWORD_BUTTON = (By.CSS_SELECTOR, '.button-1.change-password-button')
 

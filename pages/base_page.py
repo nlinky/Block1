@@ -31,3 +31,13 @@ class BasePage:
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOG_IN_LINK), "Login link is not presented"
+
+    def should_be_authorized_user(self):
+        # account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
+        # assert account_link.text == 'ttest@test.test', 'Account link is not presented," \
+        #                                                              " probably unauthorised user"'
+        assert self.browser.find_element(*BasePageLocators.LOG_OUT_LINK), "Log out link is not presented," \
+                                                                     " probably unauthorised user"
+
+
+

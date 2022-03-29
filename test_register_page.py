@@ -22,7 +22,7 @@ class TestRegisterFromMainPage:
 
 @pytest.mark.form_register
 class TestRegisterFromLoginPage:
-    # проверка наличия формы со всеми полями для регистрации со строницы логина
+    # проверка наличия формы со всеми полями для регистрации со страницы логина
     def test_guest_can_go_to_register_with_login_page(self, browser):
         page = MainPage(browser, link)
         page.open()
@@ -49,6 +49,7 @@ class TestRegisterNewUser:
         page.filling_registration_form(first_name, last_name, email, password)
         page.register_new_user()
         page.should_be_success_message_registration()
+        page.should_be_authorized_user()
         time.sleep(3)
 
     # регистрация с выбором мужского пола
@@ -64,6 +65,7 @@ class TestRegisterNewUser:
         page.gender(gender='male')
         page.register_new_user()
         page.should_be_success_message_registration()
+        page.should_be_authorized_user()
         time.sleep(3)
 
     # регистрация с выбором женского пола
@@ -79,6 +81,7 @@ class TestRegisterNewUser:
         page.gender(gender='female')
         page.register_new_user()
         page.should_be_success_message_registration()
+        page.should_be_authorized_user()
         time.sleep(3)
 
 
