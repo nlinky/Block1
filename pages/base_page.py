@@ -39,5 +39,12 @@ class BasePage:
         assert self.browser.find_element(*BasePageLocators.LOG_OUT_LINK), "Log out link is not presented," \
                                                                      " probably unauthorised user"
 
+    def go_to_customer_page(self):
+        customer_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
+        customer_link.click()
+
+    def should_be_customer_link(self):
+        assert self.is_element_present(*BasePageLocators.ACCOUNT_LINK), "Account link is not presented"
+
 
 

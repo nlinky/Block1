@@ -21,3 +21,8 @@ http://demowebshop.tricentis.com/
 1. регистрацию нового пользователя - http://demowebshop.tricentis.com/register
 2. авторизацию пользователя - http://demowebshop.tricentis.com/login
 3. смену пароля в на странице профиля http://demowebshop.tricentis.com/customer/changepassword
+
+UPD:
+- реализовать возможность запуска тестов в двух браузерах (chrome и firefox) путем указания параметра запуска pytest
+- реализовать возможность запуска тестов в headless режиме браузера путем указания параметра запуска а pytest
+- критичные проверки собрать в test suite (используя pytest.mark)

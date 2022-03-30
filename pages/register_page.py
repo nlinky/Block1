@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import RegisterPageLocators
+from ..test_data.user import TestUserRegister
 
 
 class RegisterPage(BasePage):
@@ -49,17 +50,17 @@ class RegisterPage(BasePage):
         assert 'error' in confirm_password_input_field.get_attribute("class"), "The Confirm password field has no " \
                                                                                "Error class "
 
-    def filling_registration_form(self, first_name, last_name, email, password):
+    def filling_registration_form(self, user: TestUserRegister):
         input_first_name = self.browser.find_element(*RegisterPageLocators.REGISTER_FIRST_NAME)
-        input_first_name.send_keys(first_name)
+        input_first_name.send_keys(user.first_name)
         input_last_name = self.browser.find_element(*RegisterPageLocators.REGISTER_LAST_NAME)
-        input_last_name.send_keys(last_name)
+        input_last_name.send_keys(user.last_name)
         input_email = self.browser.find_element(*RegisterPageLocators.REGISTER_EMAIL)
-        input_email.send_keys(email)
+        input_email.send_keys(user.email)
         input_password = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD)
-        input_password.send_keys(password)
+        input_password.send_keys(user.password)
         input_password_confirm = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD_CONFIRM)
-        input_password_confirm.send_keys(password)
+        input_password_confirm.send_keys(user.password)
 
     def gender(self, gender):
         choose_gender_male = self.browser.find_element(*RegisterPageLocators.REGISTER_GENDER_MALE_RADIO)

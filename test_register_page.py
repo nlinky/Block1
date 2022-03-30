@@ -1,14 +1,15 @@
-import pytest, time, names
+import pytest, time
 
 
 from .pages.register_page import RegisterPage
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
+from .test_data.user import UserRegister1, UserRegister2, UserRegister3
 
 link = "http://demowebshop.tricentis.com/"
 
 
-@pytest.mark.form_register
+@pytest.mark.smoke
 class TestRegisterFromMainPage:
     # проверка register в урле, наличия ссылки на регистрацию, наличие формы регистрации со всеми полями
     def test_guest_can_go_to_register_page(self, browser):
@@ -20,7 +21,7 @@ class TestRegisterFromMainPage:
         register_page.should_be_register_page()
 
 
-@pytest.mark.form_register
+@pytest.mark.smoke
 class TestRegisterFromLoginPage:
     # проверка наличия формы со всеми полями для регистрации со страницы логина
     def test_guest_can_go_to_register_with_login_page(self, browser):
@@ -32,21 +33,16 @@ class TestRegisterFromLoginPage:
         login_page.go_to_register_page_with_login_page()
         register_page = RegisterPage(browser, browser.current_url)
         register_page.should_be_register_page()
-        time.sleep(1)
 
 
-@pytest.mark.register_user
+@pytest.mark.smoke
 class TestRegisterNewUser:
     # регистрация без выбора пола
     def test_register_new_user(self, browser):
         page = RegisterPage(browser, link)
         page.open()
         page.go_to_register_page()
-        first_name = names.get_first_name()
-        last_name = names.get_last_name()
-        email = str(time.time()) + '@mail.org'
-        password = '123qwe789'
-        page.filling_registration_form(first_name, last_name, email, password)
+        page.filling_registration_form(UserRegister1)
         page.register_new_user()
         page.should_be_success_message_registration()
         page.should_be_authorized_user()
@@ -57,11 +53,7 @@ class TestRegisterNewUser:
         page = RegisterPage(browser, link)
         page.open()
         page.go_to_register_page()
-        first_name = names.get_first_name(gender='male')
-        last_name = names.get_last_name()
-        email = str(time.time()) + '@mail.org'
-        password = '123qwe789'
-        page.filling_registration_form(first_name, last_name, email, password)
+        page.filling_registration_form(UserRegister2)
         page.gender(gender='male')
         page.register_new_user()
         page.should_be_success_message_registration()
@@ -73,11 +65,7 @@ class TestRegisterNewUser:
         page = RegisterPage(browser, link)
         page.open()
         page.go_to_register_page()
-        first_name = names.get_first_name(gender='female')
-        last_name = names.get_last_name()
-        email = str(time.time()) + '@mail.org'
-        password = '123qwe789'
-        page.filling_registration_form(first_name, last_name, email, password)
+        page.filling_registration_form(UserRegister3)
         page.gender(gender='female')
         page.register_new_user()
         page.should_be_success_message_registration()

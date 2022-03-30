@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class MainPageLocators:
+    pass
+
+
 class BasePageLocators:
     REGISTER_LINK = (By.CSS_SELECTOR, '.ico-register')
     LOG_IN_LINK = (By.CSS_SELECTOR, '.ico-login')
@@ -30,6 +34,11 @@ class LoginPageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, '.button-1.login-button')
     REGISTER_BLOCK = (By.CSS_SELECTOR, 'div.new-wrapper.register-block')
     REGISTER_BUTTON_ON_PAGE_LOGIN = (By.CSS_SELECTOR, '.button-1.register-button')
+    MESSAGE_ERROR = (By.CSS_SELECTOR, '.validation-summary-errors span')
+
+
+class CustomerPageLocators:
+    CHANGE_PASSWORD_LINK = (By.CSS_SELECTOR, 'div.listbox > ul > li:nth-child(7) > a')
 
 
 class ChangePasswordPageLocators:
@@ -38,4 +47,5 @@ class ChangePasswordPageLocators:
     NEW_PASSWORD = (By.CSS_SELECTOR, '#NewPassword')
     CONFIRM_PASSWORD = (By.CSS_SELECTOR, '#ConfirmNewPassword')
     CHANGE_PASSWORD_BUTTON = (By.CSS_SELECTOR, '.button-1.change-password-button')
+    RESULT_MESSAGE = (By.CSS_SELECTOR, '.result')
 

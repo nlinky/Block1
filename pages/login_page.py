@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from ..test_data.user import TestUserLogin
 
 
 class LoginPage(BasePage):
@@ -27,11 +28,11 @@ class LoginPage(BasePage):
         button_register = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON_ON_PAGE_LOGIN)
         button_register.click()
 
-    def filling_login_form(self, email, password):
+    def filling_login_form(self, user: TestUserLogin):
         input_email = self.browser.find_element(*LoginPageLocators.LOGIN_EMAIL)
-        input_email.send_keys(email)
+        input_email.send_keys(user.email)
         input_password = self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD)
-        input_password.send_keys(password)
+        input_password.send_keys(user.password)
 
     def checkbox_remember_me(self):
         checkbox_remember_me = self.browser.find_element(*LoginPageLocators.REMEMBER_ME_CHECKBOX)
@@ -41,4 +42,7 @@ class LoginPage(BasePage):
         button_login = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         button_login.click()
 
+    def message_error(self):
+        message_error = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR)
+        assert message_error.text == 'Login was unsuccessful. Please correct the errors and try again.', 'No error message when not filling in all or any fields'
 
