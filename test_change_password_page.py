@@ -5,7 +5,6 @@ from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .test_data.user import UserLogin
 from .pages.customer_page import CustomerPage
-from .pages.change_password_page import ChangePasswordPage
 
 link = "http://demowebshop.tricentis.com/"
 
