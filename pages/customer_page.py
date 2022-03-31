@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import CustomerPageLocators, ChangePasswordPageLocators
+from ..test_data.user import TestUserLogin
 
 
 class CustomerPage(BasePage):
@@ -8,8 +9,8 @@ class CustomerPage(BasePage):
         change_password_link.click()
 
 #class ChangePasswordPage(CustomerPage):
-    def should_be_change_password(self):
-        self.should_be_change_password()
+    def should_be_change_password_page(self):
+        self.should_be_change_password_url()
         self.should_be_change_password_form()
 
     def should_be_change_password_url(self):
@@ -25,9 +26,9 @@ class CustomerPage(BasePage):
         assert self.is_element_present(*ChangePasswordPageLocators.CHANGE_PASSWORD_BUTTON), 'Change password button ' \
                                                                                             'is not presented '
 
-    def filling_change_password_form(self, old_password, new_password):
+    def filling_change_password_form(self, user:TestUserLogin, new_password):
         input_old_password = self.browser.find_element(*ChangePasswordPageLocators.OLD_PASSWORD)
-        input_old_password.send_keys(old_password)
+        input_old_password.send_keys(user.password)
         input_new_password = self.browser.find_element(*ChangePasswordPageLocators.NEW_PASSWORD)
         input_new_password.send_keys(new_password)
         input_confirm_password = self.browser.find_element(*ChangePasswordPageLocators.CONFIRM_PASSWORD)

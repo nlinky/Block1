@@ -46,7 +46,6 @@ class TestRegisterNewUser:
         page.register_new_user()
         page.should_be_success_message_registration()
         page.should_be_authorized_user()
-        time.sleep(3)
 
     # регистрация с выбором мужского пола
     def test_register_new_user_male(self, browser):
@@ -58,7 +57,6 @@ class TestRegisterNewUser:
         page.register_new_user()
         page.should_be_success_message_registration()
         page.should_be_authorized_user()
-        time.sleep(3)
 
     # регистрация с выбором женского пола
     def test_register_new_user_female(self, browser):
@@ -70,7 +68,6 @@ class TestRegisterNewUser:
         page.register_new_user()
         page.should_be_success_message_registration()
         page.should_be_authorized_user()
-        time.sleep(3)
 
 
 @pytest.mark.error

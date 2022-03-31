@@ -30,7 +30,6 @@ class TestAuthorizationUser:
         page.filling_login_form(UserLogin)
         page.user_authorization()
         page.should_be_authorized_user()
-        time.sleep(3)
 
     # авторизация с галочкой чекбокса
     def test_authorization_user_with_checkbox(self, browser):
@@ -41,7 +40,6 @@ class TestAuthorizationUser:
         page.checkbox_remember_me()
         page.user_authorization()
         page.should_be_authorized_user()
-        time.sleep(3)
 
 
 @pytest.mark.error
