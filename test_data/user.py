@@ -22,6 +22,7 @@ class TestUserLogin:
 
 # str(time.time()) + '@mail.org'
 UserLogin = TestUserLogin('ttest@test.test', '123456')
+UserLoginInvalid = TestUserLogin('qwe', '1')
 UserRegister1 = TestUserRegister(names.get_first_name(), names.get_last_name(), fake.email(), '123qwe789')
 UserRegister2 = TestUserRegister(names.get_first_name(gender='male'), names.get_last_name(), fake.email(), '123qwe789')
 UserRegister3 = TestUserRegister(names.get_first_name(gender='female'), names.get_last_name(), fake.email(), '123qwe789')

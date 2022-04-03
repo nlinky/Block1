@@ -1,14 +1,13 @@
 from .base_page import BasePage
-from .locators import CustomerPageLocators, ChangePasswordPageLocators
+from .locators import ChangePasswordPageLocators
 from ..test_data.user import TestUserLogin
 
 
-class CustomerPage(BasePage):
+class ChangePasswordPage(BasePage):
     def go_to_change_password_page(self):
-        change_password_link = self.browser.find_element(*CustomerPageLocators.CHANGE_PASSWORD_LINK)
+        change_password_link = self.browser.find_element(*ChangePasswordPageLocators.CHANGE_PASSWORD_LINK)
         change_password_link.click()
 
-#class ChangePasswordPage(CustomerPage):
     def should_be_change_password_page(self):
         self.should_be_change_password_url()
         self.should_be_change_password_form()

@@ -34,14 +34,13 @@ class LoginPageLocators:
     LOGIN_BUTTON = (By.CSS_SELECTOR, '.button-1.login-button')
     REGISTER_BLOCK = (By.CSS_SELECTOR, 'div.new-wrapper.register-block')
     REGISTER_BUTTON_ON_PAGE_LOGIN = (By.CSS_SELECTOR, '.button-1.register-button')
-    MESSAGE_ERROR = (By.CSS_SELECTOR, '.validation-summary-errors span')
-
-
-class CustomerPageLocators:
-    CHANGE_PASSWORD_LINK = (By.CSS_SELECTOR, 'div.listbox > ul > li:nth-child(7) > a')
+    MESSAGE_ERROR_EMPTY = (By.CSS_SELECTOR, '.validation-summary-errors span')
+    MESSAGE_ERROR_EMPTY_ACCOUNT_OR_PASSWORD = (By.CSS_SELECTOR, '.validation-summary-errors li')
+    MESSAGE_ERROR_EMAIL_INVALID = (By.CSS_SELECTOR, '.field-validation-error span')
 
 
 class ChangePasswordPageLocators:
+    CHANGE_PASSWORD_LINK = (By.CSS_SELECTOR, 'div.listbox > ul > li:nth-child(7) > a')
     CHANGE_PASSWORD_FORM = (By.CSS_SELECTOR, 'form[action="/customer/changepassword"]')
     OLD_PASSWORD = (By.CSS_SELECTOR, '#OldPassword')
     NEW_PASSWORD = (By.CSS_SELECTOR, '#NewPassword')

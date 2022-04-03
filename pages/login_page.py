@@ -29,8 +29,14 @@ class LoginPage(BasePage):
         button_register.click()
 
     def filling_login_form(self, user: TestUserLogin):
+        self.filling_email_field(user)
+        self.filling_password_field(user)
+
+    def filling_email_field(self, user: TestUserLogin):
         input_email = self.browser.find_element(*LoginPageLocators.LOGIN_EMAIL)
         input_email.send_keys(user.email)
+
+    def filling_password_field(self, user: TestUserLogin):
         input_password = self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD)
         input_password.send_keys(user.password)
 
@@ -42,7 +48,26 @@ class LoginPage(BasePage):
         button_login = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         button_login.click()
 
-    def message_error(self):
-        message_error = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR)
-        assert message_error.text == 'Login was unsuccessful. Please correct the errors and try again.', 'No error message when not filling in all or any fields'
+    def message_error_empty_fields(self):
+        message_error = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMPTY)
+        assert message_error.text == 'Login was unsuccessful. Please correct the errors and try again.', 'If you do not fill in any fields, an error message is not issued'
 
+    def message_error_account_empty(self):
+        message_error_account = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMPTY_ACCOUNT_OR_PASSWORD)
+        assert message_error_account.text == 'No customer account found', 'No error message when not filling in the email field'
+
+    def message_error_password_empty(self):
+        message_error_account = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMPTY_ACCOUNT_OR_PASSWORD)
+        assert message_error_account.text == 'The credentials provided are incorrect', 'No error message when not filling in the password field'
+
+    def message_error_invalid_fields(self):
+        message_error = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMAIL_INVALID)
+        assert message_error.text == 'Please enter a valid email address.', 'There is no error message when filling in any fields with invalid data'
+
+    def message_error_invalid_email(self):
+        message_error = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMAIL_INVALID)
+        assert message_error.text == 'Please enter a valid email address.', 'When filling in the email field with incorrect data, an error message is not issued'
+
+    def message_error_invalid_password(self):
+        message_error_account = self.browser.find_element(*LoginPageLocators.MESSAGE_ERROR_EMPTY_ACCOUNT_OR_PASSWORD)
+        assert message_error_account.text == 'The credentials provided are incorrect', 'When filling in the password field with incorrect data, an error message is not issued'
