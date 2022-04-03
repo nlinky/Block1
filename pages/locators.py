@@ -47,4 +47,5 @@ class ChangePasswordPageLocators:
     CONFIRM_PASSWORD = (By.CSS_SELECTOR, '#ConfirmNewPassword')
     CHANGE_PASSWORD_BUTTON = (By.CSS_SELECTOR, '.button-1.change-password-button')
     RESULT_MESSAGE = (By.CSS_SELECTOR, '.result')
+    MESSAGE_ERROR_OLD_PASSWORD = (By.CSS_SELECTOR, '.validation-summary-errors li')
 

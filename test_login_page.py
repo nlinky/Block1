@@ -11,6 +11,7 @@ link = "http://demowebshop.tricentis.com/"
 @pytest.mark.smoke
 class TestLoginFromMainPage:
     # проверка login в урле, наличия ссылки на авторизацию, наличие формы авторизации со всеми полями
+
     def test_guest_can_go_to_login_page(self, browser):
         page = MainPage(browser, link)
         page.open()
@@ -27,7 +28,7 @@ class TestAuthorizationUser:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_login_form()
+        page.filling_login_form(UserLogin)
         page.user_authorization()
         page.should_be_authorized_user()
 
@@ -36,7 +37,7 @@ class TestAuthorizationUser:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_login_form()
+        page.filling_login_form(UserLogin)
         page.checkbox_remember_me()
         page.user_authorization()
         page.should_be_authorized_user()
@@ -58,7 +59,7 @@ class TestErrorMessage:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_password_field(UserLogin)
+        page.filling_password_field(UserLogin.password)
         page.user_authorization()
         page.message_error_account_empty()
 
@@ -67,7 +68,7 @@ class TestErrorMessage:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_email_field(UserLogin)
+        page.filling_email_field(UserLogin.email)
         page.user_authorization()
         page.message_error_password_empty()
 
@@ -86,8 +87,8 @@ class TestErrorMessage:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_email_field(UserLoginInvalid)
-        page.filling_password_field(UserLogin)
+        page.filling_email_field(UserLoginInvalid.email)
+        page.filling_password_field(UserLogin.password)
         page.user_authorization()
         page.message_error_invalid_email()
 
@@ -96,7 +97,7 @@ class TestErrorMessage:
         page = LoginPage(browser, link)
         page.open()
         page.go_to_login_page()
-        page.filling_email_field(UserLogin)
-        page.filling_password_field(UserLoginInvalid)
+        page.filling_email_field(UserLogin.email)
+        page.filling_password_field(UserLoginInvalid.password)
         page.user_authorization()
         page.message_error_invalid_password()

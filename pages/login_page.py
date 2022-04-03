@@ -29,16 +29,16 @@ class LoginPage(BasePage):
         button_register.click()
 
     def filling_login_form(self, user: TestUserLogin):
-        self.filling_email_field(user)
-        self.filling_password_field(user)
+        self.filling_email_field(user.email)
+        self.filling_password_field(user.password)
 
-    def filling_email_field(self, user: TestUserLogin):
+    def filling_email_field(self, value):
         input_email = self.browser.find_element(*LoginPageLocators.LOGIN_EMAIL)
-        input_email.send_keys(user.email)
+        input_email.send_keys(value)
 
-    def filling_password_field(self, user: TestUserLogin):
+    def filling_password_field(self, value):
         input_password = self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD)
-        input_password.send_keys(user.password)
+        input_password.send_keys(value)
 
     def checkbox_remember_me(self):
         checkbox_remember_me = self.browser.find_element(*LoginPageLocators.REMEMBER_ME_CHECKBOX)

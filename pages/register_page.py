@@ -51,16 +51,31 @@ class RegisterPage(BasePage):
                                                                                "Error class "
 
     def filling_registration_form(self, user: TestUserRegister):
+        self.filling_first_name_field(user.first_name)
+        self.filling_last_name_field(user.last_name)
+        self.filling_email_field(user.email)
+        self.filling_password_field(user.password)
+        self.filling_password_confirm_field(user.password)
+
+    def filling_first_name_field(self, value):
         input_first_name = self.browser.find_element(*RegisterPageLocators.REGISTER_FIRST_NAME)
-        input_first_name.send_keys(user.first_name)
+        input_first_name.send_keys(value)
+
+    def filling_last_name_field(self, value):
         input_last_name = self.browser.find_element(*RegisterPageLocators.REGISTER_LAST_NAME)
-        input_last_name.send_keys(user.last_name)
+        input_last_name.send_keys(value)
+
+    def filling_email_field(self, value):
         input_email = self.browser.find_element(*RegisterPageLocators.REGISTER_EMAIL)
-        input_email.send_keys(user.email)
+        input_email.send_keys(value)
+
+    def filling_password_field(self, value):
         input_password = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD)
-        input_password.send_keys(user.password)
+        input_password.send_keys(value)
+
+    def filling_password_confirm_field(self, value):
         input_password_confirm = self.browser.find_element(*RegisterPageLocators.REGISTER_PASSWORD_CONFIRM)
-        input_password_confirm.send_keys(user.password)
+        input_password_confirm.send_keys(value)
 
     def gender(self, gender):
         choose_gender_male = self.browser.find_element(*RegisterPageLocators.REGISTER_GENDER_MALE_RADIO)
