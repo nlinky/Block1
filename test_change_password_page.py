@@ -39,7 +39,7 @@ class TestUserChangePassword:
         customer_page.should_be_success_message_change_password()
 
     def test_user_should_see_warning_if_field_old_password_is_invalid(self, browser):
-        # проверка смена пароля и сообщения об успехе
+        # проверка сообщения об ошибке при вводе неправильного старого пароля
         customer_page = ChangePasswordPage(browser, link)
         customer_page.open()
         customer_page.go_to_customer_page()
