@@ -7,7 +7,7 @@ class ProductBookPage(BasePage):
     def should_be_link_product_book_health_page(self):
         assert self.browser.find_element(*ProductBookLocators.PRODUCT_LINK_HEALTH), 'There is no link to the product'
 
-    def go_to_product_book_health_page(self, browser):
+    def go_to_product_book_health_page(self):
         product_book_link = self.browser.find_element(*ProductBookLocators.PRODUCT_LINK_HEALTH)
         # browser.execute_script("window.scrollTo(0, document.body.scrollHeight);", product_book_link)
         product_book_link.click()
