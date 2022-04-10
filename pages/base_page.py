@@ -1,4 +1,6 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
 
 
@@ -33,11 +35,8 @@ class BasePage:
         assert self.is_element_present(*BasePageLocators.LOG_IN_LINK), "Login link is not presented"
 
     def should_be_authorized_user(self):
-        # account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
-        # assert account_link.text == 'ttest@test.test', 'Account link is not presented," \
-        #                                                              " probably unauthorised user"'
         assert self.browser.find_element(*BasePageLocators.LOG_OUT_LINK), "Log out link is not presented," \
-                                                                     " probably unauthorised user"
+                                                                          " probably unauthorised user"
 
     def go_to_customer_page(self):
         customer_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
@@ -46,5 +45,10 @@ class BasePage:
     def should_be_customer_link(self):
         assert self.is_element_present(*BasePageLocators.ACCOUNT_LINK), "Account link is not presented"
 
+    def go_to_books_link(self):
+        books_link = self.browser.find_element(*BasePageLocators.BOOKS_LINK)
+        books_link.click()
 
-
+    def go_to_shopping_cart_link(self):
+        shopping_cart_link = self.browser.find_element(*BasePageLocators.SHOPPING_CART_LINK)
+        shopping_cart_link.click()

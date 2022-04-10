@@ -10,6 +10,8 @@ class BasePageLocators:
     LOG_IN_LINK = (By.CSS_SELECTOR, '.ico-login')
     LOG_OUT_LINK = (By.CSS_SELECTOR, '.ico-logout')
     ACCOUNT_LINK = (By.CSS_SELECTOR, 'div.header-links a.account')
+    BOOKS_LINK = (By.CSS_SELECTOR, '.top-menu [href="/books"]')
+    SHOPPING_CART_LINK = (By.CSS_SELECTOR, '.ico-cart')
 
 
 class RegisterPageLocators:
@@ -48,4 +50,28 @@ class ChangePasswordPageLocators:
     CHANGE_PASSWORD_BUTTON = (By.CSS_SELECTOR, '.button-1.change-password-button')
     RESULT_MESSAGE = (By.CSS_SELECTOR, '.result')
     MESSAGE_ERROR_OLD_PASSWORD = (By.CSS_SELECTOR, '.validation-summary-errors li')
+
+
+class CategoriesPageLocators:
+    NOTIFICATION_SUCCESS = (By.CSS_SELECTOR, 'p.content')
+
+
+class BooksPageLocators:
+    BUTTON_ADD_TO_CART_BOOK_NAME_HEALTH = (By.CSS_SELECTOR, '[data-productid="22"] .button-2')
+
+
+class ProductBookLocators:
+    BUTTON_ADD_TO_CART = (By.CSS_SELECTOR, '.add-to-cart-button')
+    PRODUCT_LINK_HEALTH = (By.CSS_SELECTOR, ".product-title [href='/health']")
+
+
+class CartPageLocators:
+    ITEMS_CART = (By.CSS_SELECTOR, '[action="/cart"]')
+    SUMMARY_CONTENT = (By.CSS_SELECTOR, '.order-summary-content')
+    ITEMS_QUANTITY = (By.CSS_SELECTOR, '.qty-input')
+    PRICE = (By.CSS_SELECTOR, '.product-unit-price')
+    TOTAL = (By.CSS_SELECTOR, '.product-subtotal')
+    UPDATE_SHOPPING_CART = (By.NAME, 'updatecart')
+    SUB_TOTAL = (By.CSS_SELECTOR, '.product-price')
+
 
