@@ -8,8 +8,9 @@ class BooksPage(BasePage):
         assert self.is_element_present(*BooksPageLocators.BUTTON_ADD_TO_CART_BOOK_NAME_HEALTH), 'There is no add to cart button'
 
     def adding_to_cart_from_books_page(self):
-        button_add_to_cart_fiction_book = self.browser.find_element(*BooksPageLocators.BUTTON_ADD_TO_CART_BOOK_NAME_HEALTH)
-        button_add_to_cart_fiction_book.click()
+        # button_add_to_cart_fiction_book = self.browser.find_element(*BooksPageLocators.BUTTON_ADD_TO_CART_BOOK_NAME_HEALTH)
+        # button_add_to_cart_fiction_book.click()
+        self.browser.find_element(*BooksPageLocators.BUTTON_ADD_TO_CART_BOOK_NAME_HEALTH).click()
 
     def should_be_success_message(self):
         success_message = self.browser.find_element(*CategoriesPageLocators.NOTIFICATION_SUCCESS)

@@ -12,6 +12,7 @@ class BasePageLocators:
     ACCOUNT_LINK = (By.CSS_SELECTOR, 'div.header-links a.account')
     BOOKS_LINK = (By.CSS_SELECTOR, '.top-menu [href="/books"]')
     SHOPPING_CART_LINK = (By.CSS_SELECTOR, '.ico-cart')
+    SHOPPING_CART_LINK_NOTIFICATION = (By.CSS_SELECTOR, '.content [href="/cart"]')
 
 
 class RegisterPageLocators:
@@ -73,5 +74,25 @@ class CartPageLocators:
     TOTAL = (By.CSS_SELECTOR, '.product-subtotal')
     UPDATE_SHOPPING_CART = (By.NAME, 'updatecart')
     SUB_TOTAL = (By.CSS_SELECTOR, '.product-price')
+    CHECKBOX_TERMS_OF_SERVICE = (By.ID, 'termsofservice')
+    BUTTON_CHECKOUT = (By.ID, 'checkout')
+
+
+class CheckoutPageLocators:
+    FIELD_FIRST_NAME = (By.ID, 'BillingNewAddress_FirstName')
+    FIELD_LAST_NAME = (By.ID, 'BillingNewAddress_LastName')
+    FIELD_EMAIL = (By.ID, 'BillingNewAddress_Email')
+    DROP_DOWN_COUNTRY = (By.ID, 'BillingNewAddress_CountryId')
+    FIELD_CITY = (By.ID, 'BillingNewAddress_City')
+    FIELD_ADDRESS_1 = (By.ID, 'BillingNewAddress_Address1')
+    FIELD_ZIP = (By.ID, 'BillingNewAddress_ZipPostalCode')
+    FIELD_PHONE_NUMBER = (By.ID, 'BillingNewAddress_PhoneNumber')
+    BUTTON_CONTINUE_BILLING_ADDRESS = (By.CSS_SELECTOR, '#billing-buttons-container .button-1')
+    BUTTON_CONTINUE_SHIPPING_ADDRESS = (By.CSS_SELECTOR, '#shipping-buttons-container .button-1')
+    BUTTON_CONTINUE_SHIPPING_METHOD = (By.CSS_SELECTOR, '#shipping-method-buttons-container .button-1')
+    BUTTON_CONTINUE_PAYMENT_METHOD = (By.CSS_SELECTOR, '#payment-method-buttons-container .button-1')
+    BUTTON_CONTINUE_PAYMENT_INFORMATION = (By.CSS_SELECTOR, '#payment-info-buttons-container .button-1')
+    BUTTON_CONFIRM_ORDER = (By.CSS_SELECTOR, '#confirm-order-buttons-container .button-1')
+    SECTION_ORDER_COMPLETED = (By.CSS_SELECTOR, '.section.order-completed')
 
 

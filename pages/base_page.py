@@ -20,6 +20,14 @@ class BasePage:
             return False
         return True
 
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
+
     def go_to_register_page(self):
         register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
         register_link.click()
@@ -49,6 +57,13 @@ class BasePage:
         books_link = self.browser.find_element(*BasePageLocators.BOOKS_LINK)
         books_link.click()
 
+    def should_be_shopping_cart_link(self):
+        assert self.is_element_present(*BasePageLocators.SHOPPING_CART_LINK), "Shopping cart link is not presented"
+
     def go_to_shopping_cart_link(self):
         shopping_cart_link = self.browser.find_element(*BasePageLocators.SHOPPING_CART_LINK)
+        shopping_cart_link.click()
+
+    def go_to_shopping_cart_link_notification(self):
+        shopping_cart_link = self.browser.find_element(*BasePageLocators.SHOPPING_CART_LINK_NOTIFICATION)
         shopping_cart_link.click()
